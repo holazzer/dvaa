@@ -54,5 +54,14 @@ def val():
     else: return jsonify({'code': -2})
 
 
+@app.route('/see')
+def see():
+    username = request.args.get('username')
+    if os.path.exists(f'{username}.txt'):
+        with open(f'{username}.txt', encoding='utf-8') as f:
+            return f.read()
+    return redirect(url_for('hello'))
+
+
 if __name__ == '__main__':
     app.run(debug=True)

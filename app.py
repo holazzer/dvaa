@@ -25,7 +25,7 @@ def login():
 def task():
     username = session.get('username')
     if not username:
-        return redirect(url_for('hello'))
+        return redirect(url_for('login'))
     if not os.path.exists(f'{username}.txt'):
         open(f'{username}.txt', 'w').close()
     entries = {}

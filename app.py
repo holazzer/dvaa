@@ -34,7 +34,9 @@ def task():
             idx, label = line.split(',')
             entries[idx] = label
     task_ls = sorted(os.listdir('static/t102'), key=lambda x: int(x.split('.')[0]))
-    for k in entries: task_ls.remove(k)
+    for k in entries:
+        if k in task_ls:
+            task_ls.remove(k)
     t1 = task_ls[0]
     return render_template("task.html", task_name=t1, username=username)
 

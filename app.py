@@ -33,7 +33,7 @@ def task():
         for line in f:
             idx, label = line.split(',')
             entries[idx] = label
-    task_ls = sorted(os.listdir('static/t101'), key=lambda x: int(x.split('.')[0]))
+    task_ls = sorted(os.listdir('static/t102'), key=lambda x: int(x.split('.')[0]))
     for k in entries: task_ls.remove(k)
     t1 = task_ls[0]
     return render_template("task.html", task_name=t1, username=username)
@@ -44,7 +44,7 @@ def val():
     username = session.get('username')
     if not username: return jsonify({'code': -1})
     tid = request.args.get('tid')
-    task_ls = os.listdir('static/t101')
+    task_ls = os.listdir('static/t102')
     if tid not in task_ls: return jsonify({'code': 404})
     correct = request.args.get('correct')
     if correct == '0' or correct == '1':
